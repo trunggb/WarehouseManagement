@@ -1,0 +1,142 @@
+.flex-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.space-around {
+	justify-content: space-around;
+}
+
+.space-between {
+	justify-content: space-between;
+}
+
+.tab-container {
+	height: 20%;
+}
+
+.height-100vh {
+	min-height: 100vh;
+}
+
+.height-80vh {
+	padding-top: 50px;
+	min-height: 80vh;
+}
+
+.black-border {
+	border: none;
+	margin-left: 30%;
+	margin-right: 30%;
+	background-color: #dbdbdb;
+}
+
+.big-title {
+	font-size: 60px;
+	font-weight: 800;
+}
+
+.smal-title {
+	font-size: 30px;
+}
+
+.white-text {
+	color: white;
+}
+
+.function-button {
+	background: white !important;
+	border: none !important;
+	color: black !important;
+	width: 100px;
+}
+
+.input-container {
+	height: 20vh;
+}
+
+.menu-container {
+	background-color: #dbdbdb;
+}
+
+.content-container {
+	
+}
+
+.ava-container {
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	background: white;
+	display: flex;
+	align-items: center;
+}
+
+.user-icon {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.fa-sign-in:before {
+	color: white;
+}
+
+.product-title {
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+
+.ui-confirm-dialog-severity {
+	display: none !important;
+}
+
+.center-but {
+	display: flex;
+	justify-content: center;
+}
+
+body {
+	margin: 0;
+}
+
+.width-80 input {
+	width: 80%;
+}
+
+.ui-sticky {
+	top: 70px !important;
+}
+
+.add-product-button {
+	text-align: right;
+}
+
+.ui-inputtextarea{
+	width: 100%;
+}
+
+.width-100 input{
+	width: 100%;
+}
+.width-69 input{
+	width: 69%;
+}
+
+.error-msg{
+	color: #fc4a1a;
+    font-size: 0.9rem;
+    font-style: italic;
+    font-family: "Roboto Condensed",sans-serif;
+}
+.ui-selectonemenu {
+    width: 90% !important;
+}
+.input-container input {
+    border-radius: 9px !important;
+}
+
+.product-title label {
+    font-size: 3rem !important;
+}

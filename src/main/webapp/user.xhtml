@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Warehouse Management</title>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.toast.css"></h:outputStylesheet>
+	<h:outputStylesheet name="components.css" library="primefaces" />
+</h:head>
+<h:body>
+
+	<h:form>
+
+		<c:if test="#{not empty userManagementBean.loginUser}">
+			<c:if test="#{userManagementBean.loginUser.role == 'ADMIN'}">
+				<div class="ui-g">
+					<div
+						class="ui-g-3 menu-container height-100vh flex-container space-around">
+						<div class="ava-container">
+							<div class="user-icon">
+								<i class="fa fa-user fa-3x"></i>
+							</div>
+						</div>
+						<div class="tab-container flex-container space-between">
+							<p:commandButton styleClass="function-button" value="users"
+								disabled="true" />
+							<p:commandButton styleClass="function-button" value="products"
+								action="#{userManagementBean.onClickProductButton}" />
+							<p:commandButton styleClass="function-button" value="orders"
+								action="#{userManagementBean.onClickOrderButton}" />
+						</div>
+
+						<div class="sign-out-container">
+							<p:commandButton styleClass="function-button" value="Sign out"
+								action="#{userManagementBean.onClickLogoutButton}" />
+						</div>
+					</div>
+					<div class="ui-g-9 flex-container height-100vh">
+						<div class="page-title product-title">
+							<p:outputLabel styleClass="big-title">USER</p:outputLabel>
+						</div>
+						<div class="flex-container space-around">
+							<p:dataTable reflow="true" rows="5" paginatorPosition="both"
+								paginator="true" rowsPerPageTemplate="5,10,15"
+								value="#{userManagementBean.users}"
+								filteredValue="#{userManagementBean.usersFiltered}"
+								paginatorTemplate="{FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+								var="user">
+								<p:column sortBy="#{user.buildFullName()}"
+									filterBy="#{user.buildFullName()}" filterMatchMode="contains">
+									<f:facet name="header">Name</f:facet>
+									<h:commandLink value="#{user.buildFullName()}">
+										<f:ajax execute="@form" render="@form" />
+									</h:commandLink>
+								</p:column>
+								<p:column sortBy="#{user.status}">
+									<f:facet name="header">Status</f:facet>
+									<h:outputText value="#{user.status.toString()}" />
+								</p:column>
+								<p:column sortBy="#{user.role.toString()}">
+									<f:facet name="header">Role</f:facet>
+									<h:outputText value="#{user.role.toString()}" />
+								</p:column>
+								<p:column>
+									<p:commandButton icon="fa fa-fw fa-edit" />
+									<p:commandButton icon="fa fa-fw fa-history" />
+								</p:column>
+							</p:dataTable>
+						</div>
+					</div>
+				</div>
+			</c:if>
+		</c:if>
+	</h:form>
+	<p:growl id="growl" showDetail="true" sticky="true" />
+	<h:outputScript library="js" name="script.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.toast.js"></h:outputScript>
+</h:body>
+</html>

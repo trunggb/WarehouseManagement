@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.0"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
+	<application>
+		<action-listener>org.primefaces.application.DialogActionListener</action-listener>
+		<navigation-handler>org.primefaces.application.DialogNavigationHandler</navigation-handler>
+		<view-handler>org.primefaces.application.DialogViewHandler</view-handler>
+	</application>
+	<navigation-rule>
+		<from-view-id>index.xhtml</from-view-id>
+		<navigation-case>
+			<from-action>#{productBean.viewProduct}</from-action>
+			<from-outcome>viewProduct</from-outcome>
+			<to-view-id>viewProduct.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{productBean.updateProduct}</from-action>
+			<from-outcome>updateProduct</from-outcome>
+			<to-view-id>updateProduct.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{productBean.addProduct}</from-action>
+			<from-outcome>addProduct</from-outcome>
+			<to-view-id>addProduct.xhtml</to-view-id>
+		</navigation-case>
+		
+		<navigation-case>
+			<from-action>#{orderBean.viewOrder}</from-action>
+			<from-outcome>viewOrder</from-outcome>
+			<to-view-id>viewOrder.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{orderBean.updateOrder}</from-action>
+			<from-outcome>updateOrder</from-outcome>
+			<to-view-id>updateOrder.xhtml</to-view-id>
+		</navigation-case>
+	</navigation-rule>
+</faces-config>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>Update product</title>
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputStylesheet library="css" name="jquery.toast.css"></h:outputStylesheet>
+	<h:outputStylesheet name="grid/grid.css" library="primefaces" />
+
+	<h:outputStylesheet name="components.css" library="primefaces" />
+</h:head>
+
+<h:body>
+	<h:form id="update-product-form">
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel for="product-name" value="Name:" />
+			</div>
+			<div class="ui-g-6 width-100">
+				<p:inputText value="#{productUpdateBean.product.name}"
+					id="product-name" required="true"
+					requiredMessage="Name is required">
+					<p:ajax event="blur" update="@this update-product-form:name-err-msg" />
+				</p:inputText>
+			</div>
+			<div class="ui-g-3">
+				<h:message for="product-name" styleClass="error-msg"
+					id="name-err-msg" />
+			</div>
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel value="Image:" for="product-img-input" />
+			</div>
+			<div class="ui-g-6 width-100">
+				<p:inputText id="product-img-input"
+					value="#{productUpdateBean.product.image}"
+					validatorMessage="Invalid format">
+					<p:ajax event="blur" update="@this update-product-form:img-err-msg"></p:ajax>
+					<f:validator validatorId="imgValidator" />
+				</p:inputText>
+			</div>
+			<div class="ui-g-3">
+				<h:message for="product-img-input" styleClass="error-msg"
+					id="img-err-msg" />
+			</div>
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel value="Weight:" for="product-weight-input" />
+			</div>
+			<div class="ui-g-6 width-100">
+				<p:inputNumber id="product-weight-input"
+					validatorMessage="Weight must be 1-50"
+					value="#{productUpdateBean.product.weight}">
+					<f:validateDoubleRange minimum="1" maximum="50" />
+					<p:ajax event="blur" update="@this update-product-form:weight-err-msg" />
+					<f:convertNumber maxFractionDigits="2"></f:convertNumber>
+				</p:inputNumber>
+			</div>
+			<div class="ui-g-3">
+				<h:message for="product-weight-input" styleClass="error-msg"
+					id="weight-err-msg" />
+			</div>
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel value="Amount:" for="product-amount-input" />
+			</div>
+			<div class="ui-g-6 width-100">
+				<p:inputNumber id="product-amount-input"
+					value="#{productUpdateBean.product.amount}"
+					validatorMessage="Amount must be 1-100">
+					<f:validateLongRange minimum="1" maximum="100" />
+					<p:ajax event="blur" update="@this update-product-form:amount-err-msg" />
+					<f:convertNumber maxFractionDigits="0"></f:convertNumber>
+				</p:inputNumber>
+			</div>
+			<div class="ui-g-3">
+				<h:message for="product-amount-input" styleClass="error-msg"
+					id="amount-err-msg" />
+			</div>
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel value="Status:" for="product-status-radio" />
+			</div>
+			<div class="ui-g-6">
+				<p:selectOneRadio id="product-status-radio" required="true"
+					requiredMessage="Status is required"
+					value="#{productUpdateBean.product.status}">
+					<f:selectItems value="#{productAddBean.getProductStatus()}"
+						var="productStatus" itemValue="#{productStatus}"
+						itemLabel="#{productStatus.toString()}" />
+					<p:ajax event="change"
+						update="@this update-product-form:status-err-msg" />
+				</p:selectOneRadio>
+			</div>
+			<div class="ui-g-3">
+				<h:message for="product-status-radio" styleClass="error-msg"
+					id="status-err-msg" />
+			</div>
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel value="In date:" />
+			</div>
+			<div class="ui-g-6 width-100">
+				<p:calendar value="#{productUpdateBean.product.inDate}"
+					pattern="yyyy-MMM-dd" />
+			</div>
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel value="Out date:" />
+			</div>
+			<div class="ui-g-6 width-100">
+				<p:calendar value="#{productUpdateBean.product.outDate}"
+					pattern="yyyy-MMM-dd" />
+			</div>
+		</div>
+		<div class="ui-g">
+			<div class="ui-g-3">
+				<p:outputLabel styleClass="width-80" value="Expiry date:" />
+			</div>
+			<div class="ui-g-6 width-100">
+				<p:calendar value="#{productUpdateBean.product.expiryDate}"
+					pattern="yyyy-MMM-dd" />
+			</div>
+		</div>
+		<div class="center-but">
+			<p:commandButton value="Update" action="#{productUpdateBean.update}" />
+		</div>
+	</h:form>
+	<h:outputScript library="js" name="script.js"></h:outputScript>
+	<h:outputScript library="js" name="jquery.toast.js"></h:outputScript>
+</h:body>
+
+</html>

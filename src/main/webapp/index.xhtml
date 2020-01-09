@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3c.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+	<title>Warehouse Management</title>
+	<h:outputStylesheet library="css" name="style.css"></h:outputStylesheet>
+	<h:outputScript library="js" name="script.js"></h:outputScript>
+	<h:outputStylesheet
+		name="webjars/font-awesome/4.4.0/css/font-awesome.css" />
+</h:head>
+<h:body>
+	<h:form>
+		<div class="height-100vh black-border">
+			<div class="flex-container space-around height-80vh">
+				<div>
+					<h:outputText class="big-title" value="WAREHOUSE" />
+					<h:outputText class="smal-title" value="management" />
+				</div>
+				<div class="ui-g-12 flex-container space-around input-container">
+					<p:inputText placeholder="username" value="#{loginBean.userName}" />
+					<p:password placeholder="password" value="#{loginBean.passWord}"/>
+				</div>
+				<p:commandButton styleClass="function-button" value="sign in"
+					action="#{loginBean.onClickLoginButton}"></p:commandButton>
+			</div>
+		</div>
+	</h:form>
+</h:body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>View product</title>
+	<h:outputScript name="jquery/jquery-plugins.js" library="primefaces" />
+	<h:outputStylesheet name="grid/grid.css" library="primefaces" />
+	<h:outputStylesheet name="components.css" library="primefaces" />
+</h:head>
+
+<h:body>
+	<div class="ui-g">
+		<div class="ui-g-10">
+			<p:outputLabel value="Product name" />
+		</div>
+		<div class="ui-g-2">
+			<p:outputLabel value="Amount" />
+		</div>
+	</div>
+	<p:repeat var="detail" value="#{orderViewBean.orderDetails}">
+		<div class="ui-g">
+			<div class="ui-g-10">
+				<h:outputText value="#{detail.product.name}" />
+			</div>
+			<div class="ui-g-2">
+				<h:outputText value="#{detail.amount}" />
+			</div>
+		</div>
+	</p:repeat>
+	<br />
+	<div class="ui-g">
+		<div class="ui-g-5">
+			<p:outputLabel value="Created by: " />
+		</div>
+		<div class="ui-g-5">
+			<h:outputText value="#{orderViewBean.order.creator.buildFullName()}" />
+		</div>
+	</div>
+	<div class="ui-g">
+		<div class="ui-g-5">
+			<p:outputLabel value="Created date: " />
+		</div>
+		<div class="ui-g-5">
+			<h:outputText value="#{orderViewBean.order.createdDate}">
+				<f:convertDateTime pattern="yyyy-MMM-dd hh:mm a"
+					timeZone="Asia/Ho_Chi_Minh" />
+			</h:outputText>
+		</div>
+	</div>
+	<div class="ui-g">
+		<div class="ui-g-5">
+			<p:outputLabel value="Note: " />
+		</div>
+		<div class="ui-g-5">
+			<h:outputText value="#{orderViewBean.order.note}" />
+		</div>
+	</div>
+	<div class="ui-g">
+		<div class="ui-g-5">
+			<p:outputLabel value="Status: " />
+		</div>
+		<div class="ui-g-5">
+			<h:outputText value="#{orderViewBean.order.status.toString()}" />
+		</div>
+	</div>
+</h:body>
+
+</html>
